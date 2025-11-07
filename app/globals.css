@@ -12,7 +12,12 @@
     border-color: theme('colors.sage.200');
   }
   body {
-    background-image: linear-gradient(to bottom right, theme('colors.sage.50'), theme('colors.tan.50'), theme('colors.peach.50'));
+    background-image: linear-gradient(
+      to bottom right,
+      theme('colors.sage.50'),
+      theme('colors.tan.50'),
+      theme('colors.peach.50')
+    );
     color: theme('colors.sage.900');
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -36,19 +41,19 @@
   }
   
   .glass-button {
-    background-color: rgba(107, 142, 111, 0.8);
+    background-color: color-mix(in srgb, theme('colors.sage.500') 80%, transparent);
     backdrop-filter: blur(12px);
     color: white;
     padding: 0.75rem 1.5rem;
-    border-radius: 16px;
+    border-radius: theme('borderRadius.glass');
     border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    box-shadow: theme('boxShadow.glass');
     transition: all 0.3s;
   }
   
   .glass-button:hover {
-    background-color: rgba(86, 114, 88, 0.9);
-    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+    background-color: color-mix(in srgb, theme('colors.sage.600') 90%, transparent);
+    box-shadow: theme('boxShadow.glass-hover');
     transform: scale(1.05);
   }
   
@@ -56,15 +61,15 @@
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 16px;
+    border-radius: theme('borderRadius.glass');
     padding: 0.75rem 1rem;
     transition: all 0.3s;
   }
   
   .glass-input:focus {
     background-color: rgba(255, 255, 255, 0.7);
-    border-color: rgba(139, 168, 136, 1);
-    box-shadow: 0 0 0 3px rgba(160, 181, 160, 0.5);
+    border-color: theme('colors.sage.400');
+    box-shadow: 0 0 0 3px color-mix(in srgb, theme('colors.sage.300') 50%, transparent);
     outline: none;
   }
   
@@ -77,11 +82,20 @@
   }
   
   .hero-gradient {
-    background-image: linear-gradient(to bottom right, rgba(227, 233, 227, 0.95), rgba(244, 239, 230, 0.9), rgba(240, 184, 146, 0.95));
+    background-image: linear-gradient(
+      to bottom right,
+      color-mix(in srgb, theme('colors.sage.100') 95%, transparent),
+      color-mix(in srgb, theme('colors.tan.100') 90%, transparent),
+      color-mix(in srgb, theme('colors.peach.100') 95%, transparent)
+    );
   }
   
   .section-gradient {
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(246, 248, 246, 0.8));
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.8),
+      color-mix(in srgb, theme('colors.sage.50') 80%, transparent)
+    );
   }
 }
 

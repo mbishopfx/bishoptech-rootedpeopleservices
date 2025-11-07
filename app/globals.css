@@ -1,26 +1,113 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf8f5;
+  --foreground: #2f3c30;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-sage-200;
+  }
+  body {
+    @apply bg-gradient-to-br from-sage-50 via-tan-50 to-peach-50 text-sage-900 antialiased;
+  }
+  html {
+    @apply scroll-smooth;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .glass-container {
+    @apply bg-white/40 backdrop-blur-glass border border-white/60 rounded-glass shadow-glass;
+  }
+  
+  .glass-container-hover {
+    @apply transition-all duration-300 hover:bg-white/50 hover:shadow-glass-hover hover:scale-[1.02];
+  }
+  
+  .glass-card {
+    @apply bg-white/30 backdrop-blur-glass-md border border-white/50 rounded-glass-lg shadow-glass;
+  }
+  
+  .glass-button {
+    @apply bg-sage-500/80 backdrop-blur-md text-white px-6 py-3 rounded-glass border border-white/30 shadow-glass;
+    @apply hover:bg-sage-600/90 hover:shadow-glass-hover hover:scale-105 transition-all duration-300;
+  }
+  
+  .glass-input {
+    @apply bg-white/50 backdrop-blur-md border border-white/60 rounded-glass px-4 py-3;
+    @apply focus:bg-white/70 focus:border-sage-400 focus:ring-2 focus:ring-sage-300/50 focus:outline-none;
+    @apply transition-all duration-300;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-sage-600 via-tan-500 to-peach-400 bg-clip-text text-transparent;
+  }
+  
+  .hero-gradient {
+    @apply bg-gradient-to-br from-sage-100/95 via-tan-100/90 to-peach-100/95;
+  }
+  
+  .section-gradient {
+    @apply bg-gradient-to-b from-white/80 to-sage-50/80;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .blur-elegant {
+    backdrop-filter: blur(12px) saturate(180%);
+  }
+  
+  .shadow-elegant {
+    box-shadow: 0 8px 32px 0 rgba(107, 142, 111, 0.2), 0 2px 8px 0 rgba(107, 142, 111, 0.1);
+  }
+  
+  .animate-gradient-shift {
+    background: linear-gradient(-45deg, #f6f8f6, #faf8f5, #fdf8f4, #e3e9e3, #f4efe6);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+  
+  .animate-gradient-amber {
+    background: linear-gradient(-45deg, #ffffff, #fef9f5, #fdf6f0, #faf8f5, #f8f4f1, #f6f3ef, #fef7f3);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(243, 244, 246, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(107, 142, 111, 0.5);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 142, 111, 0.7);
 }

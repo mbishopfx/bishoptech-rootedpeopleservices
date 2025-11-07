@@ -5,23 +5,46 @@
 :root {
   --background: #faf8f5;
   --foreground: #2f3c30;
+  
+  /* Sage colors */
+  --sage-50: #f6f8f6;
+  --sage-100: #e3e9e3;
+  --sage-200: #c7d4c7;
+  --sage-300: #a0b5a0;
+  --sage-400: #8BA888;
+  --sage-500: #6B8E6F;
+  --sage-600: #567258;
+  --sage-700: #455a47;
+  --sage-800: #39493a;
+  --sage-900: #2f3c30;
+  
+  /* Tan colors */
+  --tan-50: #faf8f5;
+  --tan-100: #f4efe6;
+  --tan-200: #e8dcc9;
+  --tan-300: #D4B896;
+  --tan-400: #C9A77C;
+  --tan-500: #b8935f;
+  
+  /* Peach colors */
+  --peach-50: #fdf8f4;
+  --peach-100: #F0B892;
+  --peach-200: #E6A574;
+  --peach-400: #df7e38;
 }
 
 @layer base {
   * {
-    border-color: theme('colors.sage.200');
+    border-color: var(--sage-200);
   }
+  
   body {
-    background-image: linear-gradient(
-      to bottom right,
-      theme('colors.sage.50'),
-      theme('colors.tan.50'),
-      theme('colors.peach.50')
-    );
-    color: theme('colors.sage.900');
+    background: linear-gradient(to bottom right, var(--sage-50), var(--tan-50), var(--peach-50));
+    color: var(--sage-900);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
   html {
     scroll-behavior: smooth;
   }
@@ -29,72 +52,85 @@
 
 @layer components {
   .glass-container {
-    @apply bg-white/40 backdrop-blur-glass border border-white/60 rounded-glass shadow-glass;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
   }
   
   .glass-container-hover {
-    @apply transition-all duration-300 hover:bg-white/50 hover:shadow-glass-hover hover:scale-[1.02];
+    transition: all 0.3s;
+  }
+  
+  .glass-container-hover:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+    transform: scale(1.02);
   }
   
   .glass-card {
-    @apply bg-white/30 backdrop-blur-glass-md border border-white/50 rounded-glass-lg shadow-glass;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
   }
   
   .glass-button {
-    background-color: color-mix(in srgb, theme('colors.sage.500') 80%, transparent);
+    background: rgba(107, 142, 111, 0.8);
     backdrop-filter: blur(12px);
     color: white;
     padding: 0.75rem 1.5rem;
-    border-radius: theme('borderRadius.glass');
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: theme('boxShadow.glass');
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
     transition: all 0.3s;
   }
   
   .glass-button:hover {
-    background-color: color-mix(in srgb, theme('colors.sage.600') 90%, transparent);
-    box-shadow: theme('boxShadow.glass-hover');
+    background: rgba(86, 114, 88, 0.9);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
     transform: scale(1.05);
   }
   
   .glass-input {
-    background-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: theme('borderRadius.glass');
+    border-radius: 16px;
     padding: 0.75rem 1rem;
     transition: all 0.3s;
   }
   
   .glass-input:focus {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-color: theme('colors.sage.400');
-    box-shadow: 0 0 0 3px color-mix(in srgb, theme('colors.sage.300') 50%, transparent);
+    background: rgba(255, 255, 255, 0.7);
+    border-color: var(--sage-400);
+    box-shadow: 0 0 0 3px rgba(160, 181, 160, 0.5);
     outline: none;
   }
   
   .text-gradient {
-    background-image: linear-gradient(to right, theme('colors.sage.600'), theme('colors.tan.500'), theme('colors.peach.400'));
+    background: linear-gradient(to right, var(--sage-600), var(--tan-500), var(--peach-400));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent;
   }
   
   .hero-gradient {
-    background-image: linear-gradient(
+    background: linear-gradient(
       to bottom right,
-      color-mix(in srgb, theme('colors.sage.100') 95%, transparent),
-      color-mix(in srgb, theme('colors.tan.100') 90%, transparent),
-      color-mix(in srgb, theme('colors.peach.100') 95%, transparent)
+      rgba(227, 233, 227, 0.95),
+      rgba(244, 239, 230, 0.9),
+      rgba(240, 184, 146, 0.95)
     );
   }
   
   .section-gradient {
-    background-image: linear-gradient(
+    background: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.8),
-      color-mix(in srgb, theme('colors.sage.50') 80%, transparent)
+      rgba(246, 248, 246, 0.8)
     );
   }
 }

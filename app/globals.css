@@ -9,7 +9,7 @@
 
 @layer base {
   * {
-    @apply border-sage-200;
+    border-color: theme('colors.sage.200');
   }
   body {
     @apply bg-gradient-to-br from-sage-50 via-tan-50 to-peach-50 text-sage-900 antialiased;
